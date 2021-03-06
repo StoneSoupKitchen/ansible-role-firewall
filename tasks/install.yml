@@ -1,0 +1,11 @@
+# Install the ufw package.
+---
+- name: Define ufw_package
+  set_fact:
+    ufw_package: "{{ __ufw_package }}"
+  when: ufw_package is not defined
+
+- name: Install ufw
+  apt:
+    name: "{{ ufw_package }}"
+    state: "{{ ufw_package_state }}"
