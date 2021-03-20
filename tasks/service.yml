@@ -2,3 +2,5 @@
 - name: Start and enable ufw
   ufw:
     state: enabled
+  when:
+    - ansible_virtualization_type != "docker"
