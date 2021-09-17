@@ -1,15 +1,14 @@
 galaxy_info:
-  role_name: ufw
+  role_name: firewall
   author: stonesoupkitchen
-  description: Manage UncomplicatedFirewall on Linux.
+  description: Manage firewall settings for Linux systems.
   license: BSD-3-Clause
   min_ansible_version: 2.9
   platforms:
     - name: Debian
       versions:
-        - buster
+        - 10
   galaxy_tags:
-    - ufw
     - firewall
     - system
 dependencies: []

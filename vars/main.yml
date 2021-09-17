@@ -1,2 +1,2 @@
 ---
-__ufw_package: "ufw"
+__firewall_package: "ufw"

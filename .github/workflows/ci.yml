@@ -8,7 +8,7 @@ on:
 
 defaults:
   run:
-    working-directory: 'stonesoupkitchen.ufw'
+    working-directory: 'stonesoupkitchen.firewall'
 
 jobs:
   lint:
@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          path: 'stonesoupkitchen.ufw'
+          path: 'stonesoupkitchen.firewall'
 
       - name: Set up Python 3
         uses: actions/setup-python@v2
@@ -41,7 +41,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          path: 'stonesoupkitchen.ufw'
+          path: 'stonesoupkitchen.firewall'
 
       - name: Set up Python 3
         uses: actions/setup-python@v2
@@ -68,7 +68,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          path: 'stonesoupkitchen.ufw'
+          path: 'stonesoupkitchen.firewall'
 
       - name: Set up Python 3
         uses: actions/setup-python@v2

@@ -6,6 +6,6 @@
       set_fact:
         ansible_virtualization_type: "docker"
 
-    - name: "Include stonesoupkitchen.ufw"
+    - name: "Include stonesoupkitchen.firewall"
       include_role:
-        name: "stonesoupkitchen.ufw"
+        name: "stonesoupkitchen.firewall"

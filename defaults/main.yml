@@ -1,5 +1,5 @@
 ---
-# State of the ufw package. Use `present` to make sure the package is
+# State of the firewall package. Use `present` to make sure the package is
 # installed, or use `latest` to make sure the package is always at the latest
 # version.
-ufw_package_state: present
+firewall_package_state: present
