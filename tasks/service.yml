@@ -1,5 +1,5 @@
 ---
-- name: Start and enable ufw
+- name: Start and enable firewall service
   ufw:
     state: enabled
   when:
