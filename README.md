@@ -1,4 +1,4 @@
-[![CI](https://github.com/StoneSoupKitchen/ansible-role-ufw/actions/workflows/ci.yml/badge.svg)](https://github.com/StoneSoupKitchen/ansible-role-ufw/actions/workflows/ci.yml)
+[![CI](https://github.com/StoneSoupKitchen/ansible-role-firewall/actions/workflows/ci.yml/badge.svg)](https://github.com/StoneSoupKitchen/ansible-role-firewall/actions/workflows/ci.yml)
 
 # Ansible role: firewall
 
