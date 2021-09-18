@@ -1,0 +1,15 @@
+# Validate settings and host configurations prior to running the role.
+#
+---
+- name: Perform system validation
+  assert:
+    that: "ansible_os_family | lower is in ['debian']"
+    fail_msg: "Unsupported OS family: {{ ansible_os_family }}"
+    quiet: true
+
+- name: Validate firewall_provider
+  assert:
+    that:
+      - firewall_provider is defined
+      - firewall_provider is in ['auto', 'ufw']
+    quiet: true

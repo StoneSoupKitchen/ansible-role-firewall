@@ -1,0 +1,6 @@
+---
+- name: Gather implementation-specific variables
+  include_vars: "type/{{ firewall_provider }}.yml"
+
+- import_tasks: "ufw/install.yml"
+- import_tasks: "ufw/service.yml"
