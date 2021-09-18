@@ -9,5 +9,4 @@
   apt:
     name: "{{ firewall_package }}"
     state: "{{ firewall_package_state }}"
-    update_cache: true
 

@@ -6,6 +6,10 @@
       set_fact:
         ansible_virtualization_type: "docker"
 
+    - name: "Update apt cache"
+      apt:
+        update_cache: true
+
     - name: "Include stonesoupkitchen.firewall"
       include_role:
         name: "stonesoupkitchen.firewall"
