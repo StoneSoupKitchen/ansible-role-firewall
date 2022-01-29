@@ -9,18 +9,23 @@ Install and configure a firewall on Linux-based systems.
 Supported operating systems:
 * Debian 10 (Buster)
 
-## Example Playbook
-
-    - hosts: servers
-      roles:
-         - stonesoupkitchen.firewall
-
 ## Role Variables
 
-| Variable                 | Description                                             | Default   |
-|--------------------------|---------------------------------------------------------|-----------|
-| `firewall_package`       | Name of package. Use `ufw=ver` to pin to a version.     | `ufw`     |
-| `firewall_package_state` | Installation state for `ufw_package`.                   | `present` |
+The following table lists all variables that can be overridden
+and their default values.
+
+| Name                     | Default Value | Description                      |
+| ------------------------ | ------------- | -------------------------------- |
+| `firewall_provider` | auto | Firewall tool to use. Automatically determined. |
+| `firewall_package_state` | present | Installation state for firewall package. |
+
+## Examples
+
+```yaml
+- hosts: all
+  roles:
+    - stonesoupkitchen.firewall
+```
 
 ## Development
 
@@ -28,8 +33,7 @@ A Makefile is included for easier development with `pipenv`.
 After cloning this repository,
 use the following commands to set up an environment.
 
-    pipenv shell
-    pipenv install -r requirements.txt
+    pipenv install --dev
 
 To lint your changes with ansible-lint:
 
@@ -41,5 +45,5 @@ To run tests with molecule:
 
 ## License
 
-See [LICENSE](LICENSE).
+See [LICENSE](./LICENSE).
 
