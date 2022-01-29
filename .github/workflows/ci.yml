@@ -2,7 +2,6 @@ name: CI
 on:
   push:
     branches: [ main ]
-    tags: [ '*' ]
   pull_request:
   workflow_dispatch:
 
@@ -10,9 +9,13 @@ defaults:
   run:
     working-directory: 'stonesoupkitchen.firewall'
 
+permissions: read-all
+
 jobs:
-  lint:
-    name: Lint
+  analyze:
+    name: Analyze
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,16 +30,25 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          python -m pip install --upgrade pip pipenv wheel
+          pipenv install --dev
 
-      - name: Lint with ansible-lint
+      - name: Lint
         run: |
-          ansible-lint
+          make lint
 
   test:
     name: Test
+    needs: [Analyze]
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        distro:
+          - 'debian:10'
+          - 'debian:11'
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -50,19 +62,44 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          python -m pip install --upgrade pip pipenv wheel
+          pipenv install --dev
 
       - name: Run Molecule tests
-        run: molecule test
+        run: make test
         env:
           ANSIBLE_FORCE_COLOR: '1'
           PY_COLORS: '1'
+          MOLECULE_DISTRO: ${{ matrix.distro }}
+
+  release:
+    name: Release
+    permissions:
+      contents: read
+    needs: [Analyze, Test]
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    container: ghcr.io/stonesoupkitchen/github-publisher:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: 'stonesoupkitchen.firewall'
+          fetch-depth: 0
+
+      - name: Release
+        env:
+          GIT_USER: stonesoupkitchenbot
+          GIT_EMAIL: 80210448+stonesoupkitchenbot@users.noreply.github.com
+          GITHUB_TOKEN: ${{ github.token }}
+        run: create_release
 
   publish:
     name: Publish
-    needs: [Lint, Test]
-    if: startsWith(github.ref, 'refs/tags/')
+    permissions:
+      contents: read
+    needs: [Analyze, Test, Release]
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
