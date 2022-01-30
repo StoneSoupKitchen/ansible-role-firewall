@@ -1,6 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.1.1] - 2022-01-30
+
+### Bug Fixes
+
+- Change invalid Ansible Galaxy metadata (cefb69d)
+
+### Miscellaneous Tasks
+
+- Fix CI permissions to enable autoreleases (75ab28a)
+- Use SSK release token to perform releases (33199dc)
+- Add release token to the checkout step (6b1fb73)
+
 ## [0.1.0] - 2022-01-29
 
 ### Miscellaneous Tasks
