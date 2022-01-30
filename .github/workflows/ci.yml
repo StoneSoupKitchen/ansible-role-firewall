@@ -86,6 +86,7 @@ jobs:
         with:
           path: 'stonesoupkitchen.firewall'
           fetch-depth: 0
+          token: ${{ secrets.SSKBOT_RELEASE_TOKEN }}
 
       - name: Release
         env:
