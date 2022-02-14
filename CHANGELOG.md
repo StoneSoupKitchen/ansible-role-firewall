@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.1.2] - 2022-02-14
+
+### Miscellaneous Tasks
+
+- Bump ansible-lint from 5.3.2 to 5.4.0 (#7) (a6b2f9f)
+
 ## [0.1.1] - 2022-01-30
 
 ### Bug Fixes
