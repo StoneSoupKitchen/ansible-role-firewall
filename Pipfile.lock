@@ -34,10 +34,10 @@
         },
         "ansible-core": {
             "hashes": [
-                "sha256:b87188beacfac1bb6dc5cf65663f3c52e66e0f9990742db00a3dca71ebae2eee"
+                "sha256:5f360f090a6f2e3169e583542413bdd40b8122dbc4153603048e7747d1ba9604"
             ],
             "index": "pypi",
-            "version": "==2.11.7"
+            "version": "==2.11.8"
         },
         "ansible-lint": {
             "hashes": [
